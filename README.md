@@ -25,7 +25,7 @@ Dependência (`pom.xml`):
 
 #### Acrescentando informações em Usuário
 
-- Em [UsuarioController](src/main/java/br/edu/ifc//bikes/web/UsuarioController.java):
+- Em [UsuarioController](src/main/java/br/edu/ifc//bikes/web/controller/UsuarioController.java):
    - No cabeçalho
    ```
    @Tag(name = "Usuarios", description = "Contém todas as operações relativas aos recursos para cadastro, edição e leitura de um usuário.")

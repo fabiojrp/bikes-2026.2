@@ -17,8 +17,7 @@ public class ApiExceptionHandler {
             MethodArgumentNotValidException ex,
             HttpServletRequest request,
             BindingResult result){
-
-
+        
         return ResponseEntity
                 .status(HttpStatus.UNPROCESSABLE_CONTENT)
                 .contentType(MediaType.APPLICATION_JSON)

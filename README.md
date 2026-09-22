@@ -19,7 +19,7 @@ Dependência (`pom.xml`):
    springdoc.packages-to-scan=br.edu.ifc.bikes.web.controller
 ```
 
-- Criar a classe [SpringDocOpenApiConfig](bikes/src/main/java/br/ifc/videira/bikes/config/SpringDocOpenApiConfig.java) no pacote `config`.
+- Criar a classe [SpringDocOpenApiConfig](src/main/java/br/edu/ifc/videira/bikes/config/SpringDocOpenApiConfig.java) no pacote `config`.
 
 - Acessar a [documentação](http://localhost:8080/docs-bikes.html).
 

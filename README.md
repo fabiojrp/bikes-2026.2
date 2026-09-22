@@ -16,7 +16,7 @@ Dependência (`pom.xml`):
    springdoc.swagger-ui.path=/docs-bikes.html
    # Código gerado para acessar a documentação da API no Swagger UI: http://localhost:8080/docs-bikes.html
    springdoc.api-docs.path=/docs-bikes
-   springdoc.packages-to-scan=br.com.bikes.web.controller
+   springdoc.packages-to-scan=br.edu.ifc.bikes.web.controller
 ```
 
 - Criar a classe [SpringDocOpenApiConfig](bikes/src/main/java/br/ifc/videira/bikes/config/SpringDocOpenApiConfig.java) no pacote `config`.

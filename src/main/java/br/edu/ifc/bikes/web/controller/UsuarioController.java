@@ -2,6 +2,7 @@ package br.edu.ifc.bikes.web.controller;
 
 import br.edu.ifc.bikes.dto.UsuarioRequestDTO;
 import br.edu.ifc.bikes.dto.UsuarioResponseDTO;
+import br.edu.ifc.bikes.dto.UsuarioSenhaDto;
 import br.edu.ifc.bikes.service.UsuarioService;
 import br.edu.ifc.bikes.web.exception.ErrorMessage;
 import io.swagger.v3.oas.annotations.Operation;
@@ -71,8 +72,8 @@ public class UsuarioController {
         })
     //o PATCH deve ser utilizado, no lugar no PUT, quando a atualização for de poucos campos.
     @PatchMapping("/{id}")
-    public ResponseEntity<UsuarioResponseDTO> updatePassword(@PathVariable Long id, @RequestBody UsuarioRequestDTO usuario){
-        UsuarioResponseDTO updateUsuario = usuarioService.updatePassword(id, usuario.password());
+    public ResponseEntity<UsuarioResponseDTO> updatePassword(@PathVariable Long id, @RequestBody UsuarioSenhaDto usuario){
+        UsuarioResponseDTO updateUsuario = usuarioService.updatePassword(id, usuario.novaSenha(), usuario.confirmaSenha(), usuario.senhaAtual());
         if (updateUsuario != null){
             return ResponseEntity.ok(updateUsuario);
         }else{

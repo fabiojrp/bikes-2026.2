@@ -101,6 +101,7 @@ o cliente deve ter um `usuário` cadastrado e autenticado.
 - id (Long)
 - nome (String)
 - cpf (String) - deve ser único
+- método `equals`
 
 **Funcionalidades**:
 - O cadastro só pode ser feito se o usuário estiver autenticado.
@@ -117,3 +118,4 @@ o cliente deve ter um `usuário` cadastrado e autenticado.
 - O recurso `Cliente` deve ser protegido com autenticação.
 - O recurso `Cliente` deve ser documentado com SpringDoc OpenAPI 3.1 e Swagger 3.
 - Fazer validação dos campos de entrada.
+- Campos de auditoria (os mesmos de `Usuário`)

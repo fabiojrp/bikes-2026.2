@@ -113,7 +113,7 @@ o cliente deve ter um `usuário` cadastrado e autenticado.
 - Service
 - Repository
 
-Requisitos:
-    - O recurso `Cliente` deve ser protegido com autenticação.
-    - O recurso `Cliente` deve ser documentado com SpringDoc OpenAPI 3.1 e Swagger 3.
-    - Fazer validação dos campos de entrada.
+**Requisitos**:
+- O recurso `Cliente` deve ser protegido com autenticação.
+- O recurso `Cliente` deve ser documentado com SpringDoc OpenAPI 3.1 e Swagger 3.
+- Fazer validação dos campos de entrada.

@@ -107,8 +107,8 @@ o cliente deve ter um `usuário` cadastrado e autenticado.
 - O cliente pode consultar apenas os seus próprios dados.
 - O Admin pode consultar os dados de todos os clientes.
 
-**Classes a serem criadas:
-**- Classes de DTO
+**Classes a serem criadas:**
+- Classes de DTO
 - Controller
 - Service
 - Repository

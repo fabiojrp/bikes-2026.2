@@ -92,3 +92,28 @@ Dependência (`pom.xml`):
       - Observar (no Controller) que alteração de senha não retorna um corpo de mensagem, ou seja, o teste não terá retorno.
           - Como não tem retorno, os testes de valores não são necessários.
       - O método para o status será o `isNoContent()`.
+
+## Atividade 03 - Recurso Cliente
+Um cliente só pode ser cadastrado se tiver um `usuário` associado. Ou seja, para se cadastrar,
+o cliente deve ter um `usuário` cadastrado e autenticado.
+
+  - Criar o recurso `Cliente` com os seguintes campos:
+    - id (Long)
+    - nome (String)
+    - cpf (String) - deve ser único
+
+Funcionalidades:
+    - O cadastro só pode ser feito se o usuário estiver autenticado.
+    - O cliente pode consultar apenas os seus próprios dados.
+    - O Admin pode consultar os dados de todos os clientes.
+
+Classes a serem criadas:
+    - Classes de DTO
+    - Controller
+    - Service
+    - Repository
+
+Requisitos:
+    - O recurso `Cliente` deve ser protegido com autenticação.
+    - O recurso `Cliente` deve ser documentado com SpringDoc OpenAPI 3.1 e Swagger 3.
+    - Fazer validação dos campos de entrada.

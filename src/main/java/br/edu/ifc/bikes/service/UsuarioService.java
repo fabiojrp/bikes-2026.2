@@ -32,7 +32,6 @@ public class UsuarioService {
             usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
             return usuarioMapper.toResponse(usuarioRepository.save(usuario));
         }catch (RuntimeException ex){
-
             throw new UsernameUniqueViolationException(String.format("O nome do usuário '%s' já existe", usuarioRequestDTO.username()));
         }
     }

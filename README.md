@@ -203,14 +203,14 @@ Será utilizada a biblioteca [Jakarta Bean Validation](https://beanvalidation.or
       <artifactId>spring-boot-starter-validation</artifactId>
 </dependency>
    ```
-#### Validação [UsuarioRequestDTO](bikes/src/main/java/br/edu/ifc/bikes/dto/UsuarioRequestDTO.java)
+#### Validação [UsuarioRequestDTO](src/main/java/br/edu/ifc/bikes/dto/UsuarioRequestDTO.java)
 `@NotBlank`: verifica se não é `null`, se não está vazia e se tem ao menos 1 caracter - utilizar em ambos atributos.
 `@Email`: verifica formato padrão de email (não verifica se vier `null`); a vericação padrão da biblioteca é bem simples. É possível criar uma expressão regular com uma melhor validação - atributo `username`.
 `@Size`: especifica tamanho mínimo e máximo da String (útil para senha) - atributo `password`.
 
 - Acrescentar a anotação `@Valid` antes de `@RequestBody` no método `create()` na classe `UsuarioController`.
 
-#### Validação [UsuarioSenhaDTO](bikes/src/main/java/br/edu/ifc/bikes/dto/UsuarioSenhaDto.java)
+#### Validação [UsuarioSenhaDTO](src/main/java/br/edu/ifc/bikes/dto/UsuarioSenhaDto.java)
 `@NotBlank` e `@Size` para todos os atributos.
 
 - Acrescentar a anotação `@Valid` antes de `@RequestBody` no método `updatePassword()` na classe `UsuarioController`.
@@ -220,20 +220,20 @@ Será utilizada a biblioteca [Jakarta Bean Validation](https://beanvalidation.or
 ### Tratamento de Exceções com RestControllerAdvice
 
 - Criar pacote `exception` em `web`.
-- Criar classe [ErrorMessage](bikes/src/main/java/br/edu/ifc/bikes/web/exception/ErrorMessage.java).
+- Criar classe [ErrorMessage](src/main/java/br/edu/ifc/bikes/web/exception/ErrorMessage.java).
 
 Tratamento de **campos inválidos**:
-- Criar classe [ApiExceptionHandler](bikes/src/main/java/br/edu/ifc/bikes/web/exception/ApiExceptionHandler.java).
+- Criar classe [ApiExceptionHandler](src/main/java/br/edu/ifc/bikes/web/exception/ApiExceptionHandler.java).
 
 Tratamento de **usuário único**:
-- Alterar o método `salvar` em [UsuarioService](bikes/src/main/java/br/edu/ifc/bikes/service/UsuarioService.java).
-- Criar a classe [UsernameUniqueViolationException](bikes/src/main/java/br/edu/ifc/bikes/exception/UsernameUniqueViolationException.java).
-- Alterar a classe [ApiExceptionHandler](bikes/src/main/java/br/edu/ifc/bikes/web/exception/ApiExceptionHandler.java).
+- Alterar o método `salvar` em [UsuarioService](src/main/java/br/edu/ifc/bikes/service/UsuarioService.java).
+- Criar a classe [UsernameUniqueViolationException](src/main/java/br/edu/ifc/bikes/exception/UsernameUniqueViolationException.java).
+- Alterar a classe [ApiExceptionHandler](src/main/java/br/edu/ifc/bikes/web/exception/ApiExceptionHandler.java).
 
 Tratamento de **username id não encontrado**:
-- Alterar o método `getById` em [UsuarioService](bikes/src/main/java/br/edu/ifc/bikes/service/UsuarioService.java).
-- Criar a classe [UsernameUniqueViolationException](bikes/src/main/java/br/edu/ifc/bikes/exception/EntityIdNotFoundException.java).
-- Alterar a classe [ApiExceptionHandler](bikes/src/main/java/br/edu/ifc/bikes/web/exception/ApiExceptionHandler.java).
+- Alterar o método `getById` em [UsuarioService](src/main/java/br/edu/ifc/bikes/service/UsuarioService.java).
+- Criar a classe [UsernameUniqueViolationException](src/main/java/br/edu/ifc/bikes/exception/EntityIdNotFoundException.java).
+- Alterar a classe [ApiExceptionHandler](src/main/java/br/edu/ifc/bikes/web/exception/ApiExceptionHandler.java).
 
 ---
 
@@ -266,13 +266,13 @@ Dependência (`pom.xml`):
    springdoc.packages-to-scan=br.edu.ifc.bikes.web.controller
 ```
 
-- Criar a classe [SpringDocOpenApiConfig](bikes/src/main/java/br/edu/ifc/bikes/config/SpringDocOpenApiConfig.java) no pacote `config`.
+- Criar a classe [SpringDocOpenApiConfig](src/main/java/br/edu/ifc/bikes/config/SpringDocOpenApiConfig.java) no pacote `config`.
 
 - Acessar a [documentação](http://localhost:8080/docs-bikes.html).
 
 #### Acrescentando informações em Usuário
 
-- Em [UsuarioController](bikes/src/main/java/br/edu/ifc/bikes/web/controller/UsuarioController.java):
+- Em [UsuarioController](src/main/java/br/edu/ifc/bikes/web/controller/UsuarioController.java):
    - No cabeçalho
    ```
    @Tag(name = "Usuarios", description = "Contém todas as operações relativas aos recursos para cadastro, edição e leitura de um usuário.")
@@ -349,29 +349,29 @@ Dependência (`pom.xml`):
 
    ### Desenvolvimento
    O desenvolvimento dos testes dar-se-á na pasta `test` (a classe `BikesApplicatonTestes.java` pode ser removida).
-   - Criar uma pasta `resources` e dentro um arquivo [application.properties](bikes/src/test/resources/application.properties), equivalente à pasta `main`.
+   - Criar uma pasta `resources` e dentro um arquivo [application.properties](src/test/resources/application.properties), equivalente à pasta `main`.
       - Neste arquivo será configurado um banco de dados (H2 (mas poderia ser qualquer um outro)) como base para os testes.
-   - Ainda em `resources` criar as pastas `sql/usuarios`, e dentro criar o arquivo [usuarios-insert.sql](bikes/src/test/resources/sql/usuarios/usuarios-insert.sql), com alguns dados iniciais para testes; e o arquivo [usuarios-delete.sql](bikes/src/test/resources/sql/usuarios/usuarios-delete.sql], para limpar a base após os testes.
-   - Criar a classe [UsuarioIT](bikes/src/test/java/br/edu/ifc/bikes/UsuarioIT.java), no pacote `br.edu.ifc.bike`: a terminação **IT** está relacionada com integração, mesmo estando relacionado com um teste ponto a ponto.
+   - Ainda em `resources` criar as pastas `sql/usuarios`, e dentro criar o arquivo [usuarios-insert.sql](src/test/resources/sql/usuarios/usuarios-insert.sql), com alguns dados iniciais para testes; e o arquivo [usuarios-delete.sql](src/test/resources/sql/usuarios/usuarios-delete.sql], para limpar a base após os testes.
+   - Criar a classe [UsuarioIT](src/test/java/br/edu/ifc/bikes/UsuarioIT.java), no pacote `br.edu.ifc.bike`: a terminação **IT** está relacionada com integração, mesmo estando relacionado com um teste ponto a ponto.
 
    #### Teste de criação de usuário
-   - Criar o método `criarUsuario_UsernamePasswordsValido_RetornaUsuarioCriado()`em [UsuarioIT](bikes/src/test/java/br/edu/ifc/bikes/UsuarioIT.java).
+   - Criar o método `criarUsuario_UsernamePasswordsValido_RetornaUsuarioCriado()`em [UsuarioIT](src/test/java/br/edu/ifc/bikes/UsuarioIT.java).
       - o nome do método segue o padrão [Comportamento]\_[Condição]_[Resultado]
 
    #### Teste de username já existente (erro 409)
-   - Criar o método `criarUsuario_UsernameRepetido_RetornaErrorMessageStatus409()`em [UsuarioIT](bikes/src/test/java/br/edu/ifc/bikes/UsuarioIT.java).
+   - Criar o método `criarUsuario_UsernameRepetido_RetornaErrorMessageStatus409()`em [UsuarioIT](src/test/java/br/edu/ifc/bikes/UsuarioIT.java).
 
    #### Teste de username inválido (erro 422)
-   - Criar o método `criarUsuario_UsernameInvalido_RetornaErrorMessageStatus422()`em [UsuarioIT](bikes/src/test/java/br/edu/ifc/bikes/UsuarioIT.java).
+   - Criar o método `criarUsuario_UsernameInvalido_RetornaErrorMessageStatus422()`em [UsuarioIT](src/test/java/br/edu/ifc/bikes/UsuarioIT.java).
 
    #### Teste de password inválido (erro 422)
-   - Criar o método `criarUsuario_PasswordInvalido_RetornaErrorMessageStatus422()`em [UsuarioIT](bikes/src/test/java/br/edu/ifc/bikes/UsuarioIT.java).
+   - Criar o método `criarUsuario_PasswordInvalido_RetornaErrorMessageStatus422()`em [UsuarioIT](src/test/java/br/edu/ifc/bikes/UsuarioIT.java).
 
    #### Teste de busca de usuário
-   - Criar o método `buscarUsuario_IdExistente_RetornaUsuario()`em [UsuarioIT](bikes/src/test/java/br/edu/ifc/bikes/UsuarioIT.java).
+   - Criar o método `buscarUsuario_IdExistente_RetornaUsuario()`em [UsuarioIT](src/test/java/br/edu/ifc/bikes/UsuarioIT.java).
 
    #### Teste de busca de usuário inexistente
-   - Criar o método `buscarUsuario_IdInexistente_RetornaErrorMessageStatus404()`em [UsuarioIT](bikes/src/test/java/br/edu/ifc/bikes/UsuarioIT.java).
+   - Criar o método `buscarUsuario_IdInexistente_RetornaErrorMessageStatus404()`em [UsuarioIT](src/test/java/br/edu/ifc/bikes/UsuarioIT.java).
 
 --- 
 
@@ -405,16 +405,16 @@ Dependência (`pom.xml`):
    ```
 
    ### Desenvolvimento
-   - Criar classe [SpringSecurityConfig](bikes/src/main/java/br/edu/ifc/bikes/config/SpringSecurityConfig.java).
+   - Criar classe [SpringSecurityConfig](src/main/java/br/edu/ifc/bikes/config/SpringSecurityConfig.java).
    - Criar pacote `jwt` em `br.edu.ifc.bikes`.
-   - Criar classe [JwtToken](bikes/src/main/java/br/edu/ifc/bikes/jwt/JwtToken.java)
-   - Criar classe [JwtUtils](bikes/src/main/java/br/edu/ifc/bikes/jwt/JwtUtils.java)
-   - Criar classe [JwtUserDetails](bikes/src/main/java/br/edu/ifc/bikes/jwt/JwtUserDetails.java)
-   - Criar classe [JwtUserDetailsService](bikes/src/main/java/br/edu/ifc/bikes/jwt/JwtUserDetailsService.java)
-      - Criar métodos de busca por `username` e por `role` em [UsuarioService](bikes/src/main/java/br/edu/ifc/bikes/service/UsuarioService.java) e em [UsuarioRepository](bikes/src/main/java/br/edu/ifc/bikes/repository/UsuarioRepository.java)
-   - Criar classe [AutenticacaoController](bikes/src/main/java/br/edu/ifc/bikes/web/controller/AutenticacaoController.java)
-   - Criar classe [UsuarioLoginDto](bikes/src/main/java/br/edu/ifc/bikes/dto/UsuarioLoginDto.java)
-   - Criar classe [JwtAuthorizationFilter](bikes/src/main/java/br/edu/ifc/bikes/jwt/JwtAuthorizationFilter.java)
+   - Criar classe [JwtToken](src/main/java/br/edu/ifc/bikes/jwt/JwtToken.java)
+   - Criar classe [JwtUtils](src/main/java/br/edu/ifc/bikes/jwt/JwtUtils.java)
+   - Criar classe [JwtUserDetails](src/main/java/br/edu/ifc/bikes/jwt/JwtUserDetails.java)
+   - Criar classe [JwtUserDetailsService](src/main/java/br/edu/ifc/bikes/jwt/JwtUserDetailsService.java)
+      - Criar métodos de busca por `username` e por `role` em [UsuarioService](src/main/java/br/edu/ifc/bikes/service/UsuarioService.java) e em [UsuarioRepository](src/main/java/br/edu/ifc/bikes/repository/UsuarioRepository.java)
+   - Criar classe [AutenticacaoController](src/main/java/br/edu/ifc/bikes/web/controller/AutenticacaoController.java)
+   - Criar classe [UsuarioLoginDto](src/main/java/br/edu/ifc/bikes/dto/UsuarioLoginDto.java)
+   - Criar classe [JwtAuthorizationFilter](src/main/java/br/edu/ifc/bikes/jwt/JwtAuthorizationFilter.java)
       - Adicionar o método abaixo em `UsuarioService`:
       ```
       @Bean
@@ -432,7 +432,7 @@ Dependência (`pom.xml`):
          jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class)
       .build();
       ```
-   - Em [UsuarioService](bikes/src/main/java/br/edu/ifc/bikes/service/UsuarioService.java) acrescentar:
+   - Em [UsuarioService](src/main/java/br/edu/ifc/bikes/service/UsuarioService.java) acrescentar:
       ```      
       private final PasswordEncoder passwordEncoder;
       ```
@@ -471,8 +471,8 @@ Dependência (`pom.xml`):
 
 ---
 ## Habilitando o sistema de auditoria
-- Criar classe [SpringJpaAuditingConfig](bikes/src/main/java/br/edu/ifc/bikes/config/SpringJpaAuditingConfig.java) em  `config`.
-   - Alterar a classe [Usuario](bikes/src/main/java/br/edu/ifc/bikes/entity/Usuario.java) para permitir a auditoria.
+- Criar classe [SpringJpaAuditingConfig](src/main/java/br/edu/ifc/bikes/config/SpringJpaAuditingConfig.java) em  `config`.
+   - Alterar a classe [Usuario](src/main/java/br/edu/ifc/bikes/entity/Usuario.java) para permitir a auditoria.
       - Anotação na classe:
       ```
       @EntityListeners(AuditingEntityListener.class)
@@ -566,9 +566,9 @@ Dependência (`pom.xml`):
 ```
 - Em `resources`, criar um nova pasta `reports`, e colar nela o arquivo do relatório compilado (`.jasper`).
    - Nessa mesma pasta, colar a pasta `image` com a imagem do topo do relatório.
-- Criar a classe [JasperService](bikes/src/main/java/br/edu/ifc/bikes/service/JasperService.java) no pacote `service`.
+- Criar a classe [JasperService](src/main/java/br/edu/ifc/bikes/service/JasperService.java) no pacote `service`.
 
-- Em [ClienteController](bikes/src/main/java/br/edu/ifc/bikes/web/controller/ClienteController.java), acrescentar o endpoint:
+- Em [ClienteController](src/main/java/br/edu/ifc/bikes/web/controller/ClienteController.java), acrescentar o endpoint:
 ```
  @GetMapping("/relatorio")
     @PreAuthorize("hasRole('ADMIN')")
